@@ -76,7 +76,6 @@ int print_non_printable(va_list types, char buffer[],
 
 	if (str == NULL)
 		return (write(1, "(null)", 6));
-	
 	while (str[i] != '\0')
 	{
 		if (is_printable(str[i]))
