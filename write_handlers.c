@@ -34,10 +34,10 @@ int handle_write_char(char c, char buffer[],
 			buffer[BUFF_SIZE - i - 2] = padd;
 
 		if (flags & F_MINUS)
-		return (write(1, &buffer[0], 1) + 
+		return (write(1, &buffer[0], 1) +
 			write(1, &buffer[BUFF_SIZE - i - 1], width - 1));
 		else
-			return (write(1, &buffer[BUFF_SIZE - i - 1], width - 1) + 
+			return (write(1, &buffer[BUFF_SIZE - i - 1], width - 1) +
 					write(1, &buffer[0], 1));
 	}
 
@@ -74,7 +74,7 @@ int write_number(int is_negative, int ind, char buffer[],
 	else if (flags & F_SPACE)
 		extra_ch = ' ';
 
-	return (write_num(ind, buffer, flags, width, precision, 
+	return (write_num(ind, buffer, flags, width, precision,
 		length, padd, extra_ch));
 }
 
@@ -128,7 +128,7 @@ int write_num(int ind, char buffer[],
 		{
 			if (extra_c)
 				buffer[--padd_start] = extra_c;
-			return (write(1, &buffer[padd_start], i - padd_start) + 
+			return (write(1, &buffer[padd_start], i - padd_start) +
 				write(1, &buffer[ind], length - (1 - padd_start)));
 		}
 	}
@@ -149,8 +149,8 @@ int write_num(int ind, char buffer[],
  *
  * Return: number of written chars
  */
-int write_unsgnd(int is_negative, int ind, 
-	char buffer[], 
+int write_unsgnd(int is_negative, int ind,
+	char buffer[],
 	int flags, int width, int precision, int size)
 {
 	/* The number is stored at the buffer's right and starts at position i */
@@ -208,7 +208,7 @@ int write_unsgnd(int is_negative, int ind,
  *
  * Return: number of written chars
  */
-int write_pointer(char buffer[], int ind, int length, 
+int write_pointer(char buffer[], int ind, int length,
 		int width, int flags, char padd, char extra_c, int padd_start)
 {
 	int i;
@@ -224,7 +224,7 @@ int write_pointer(char buffer[], int ind, int length,
 			buffer[--ind] = '0';
 			if (extra_c)
 				buffer[--ind] = extra_c;
-			return (write(1, &buffer[ind], length) + write(1, &buffer[3], i -3));
+			return (write(1, &buffer[ind], length) + write(1, &buffer[3], i - 3));
 		}
 		else if (!(flags & F_MINUS) && padd == ' ')/* extra char to left of buffer */
 		{
@@ -240,7 +240,7 @@ int write_pointer(char buffer[], int ind, int length,
 				buffer[--padd_start] = extra_c;
 			buffer[1] = '0';
 			buffer[2] = 'x';
-			return (write(1, &buffer[padd_start], i - padd_start) + 
+			return (write(1, &buffer[padd_start], i - padd_start) +
 				write(1, &buffer[ind], length - (1 - padd_start) - 2));
 		}
 	}
