@@ -17,7 +17,7 @@ int handle_write_char(char c, char buffer[],
 { /* char is stored at left and padding at buffer's right */
 	int i = 0;
 	char padd = ' ';
-	
+
 	UNUSED(precision);
 	UNUSED(size);
 
